@@ -40,6 +40,7 @@
 		gifImage.addEventListener('click', () => {
 			chatItems[1].classList.add('ntflx-chat__item--partial');
 			chatItems[2].classList.add(chatItemVisible);
+			window.scrollTo(0, 200);
 		});
 
 		// Video Functionality
