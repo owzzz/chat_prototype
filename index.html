@@ -5,51 +5,134 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
 		<title>Netflix Chat Prototype</title>
+		<!--
+			Title: Netflix Chat Prototype
+			   Notes: Tested on Safari & Chrome
+		-->
+		<link rel="stylesheet" href="css/main.css" />
 	</head>
 	<body>
 		<section class="ntflx-layout">
 			<!-- Side Bar / Chat List Area -->
 			<aside class="ntflx-layout-side-bar">
-				<!-- Avatar -->
-				<div class="ntflx-avatar"><img src="http://www.placehold.it/30x30" alt="Jessi Greene" /></div>
+				<!-- Side bar header -->
+				<header class="ntflx-layout-side-bar__header"><img class="ntflx-avatar" src="images/avatars/profile-avatar.png" alt="Jessi Greene" /></header>
 				<!-- Chat List -->
 				<ul class="ntflx-chat-list">
 					<!-- Chat Item -->
-					<li class="ntflx-chat-list__item">
-						<div class="ntflx-chat-list__thumb"></div>
+					<li class="ntflx-chat-list__item" data-time-stamp="5 Minutes ago">
+						<img class="ntflx-avatar" src="images/avatars/avatar-michaela.png" alt="Michaela" />
 						<div class="ntflx-chat-list__main">
-							<h4>Michaela</h4>
-							<p>Doing good, how do you feel?</p>
+							<h4 class="ntflx-title">Michaela</h4>
+							<p class="ntflx-text">Doing good, how do you feel?</p>
 						</div>
-						<div class="ntflx-chat-list__meta"><time class="ntflx-time-stamp">5 Minutes ago</time></div>
 					</li>
 					<!-- Chat Item -->
-					<li class="ntflx-chat-list__item">
-						<div class="ntflx-chat-list__thumb"></div>
+					<li class="ntflx-chat-list__item" data-time-stamp="2 Days ago">
+						<img class="ntflx-avatar" src="images//avatars/avatar-mike.png" alt="Michael Shelton" />
 						<div class="ntflx-chat-list__main">
-							<h4>Michael Shelton</h4>
-							<p>Video Chat</p>
+							<h4 class="ntflx-title">Michael Shelton</h4>
+							<p class="ntflx-text">Video Chat</p>
 						</div>
-						<div class="ntflx-chat-list__meta"><time class="ntflx-time-stamp">2 Days ago</time></div>
 					</li>
 					<!-- Chat Item -->
-					<li class="ntflx-chat-list__item">
-						<div class="ntflx-chat-list__thumb"></div>
+					<li class="ntflx-chat-list__item" data-time-stamp="1 Month ago">
+						<img class="ntflx-avatar" src="images/avatars/avatar-todd.png" alt="Todd Fisher" />
 						<div class="ntflx-chat-list__main">
-							<h4>Todd Fisher</h4>
-							<p>Good Afternoon!</p>
+							<h4 class="ntflx-title">Todd Fisher</h4>
+							<p class="ntflx-text">Good Afternoon!</p>
 						</div>
-						<div class="ntflx-chat-list__meta"><time class="ntflx-time-stamp">1 Month ago</time></div>
 					</li>
 				</ul>
 			</aside>
 			<!-- Main Chat Area -->
 			<main class="ntflx-layout-main">
-				<header class="ntflx-header">
+				<!-- Main Chare Area Header -->
+				<header class="ntflx-chat__header">
 					<h2 class="ntflx-title">Michaela, Amy</h2>
-					<span class="ntflx-label">Today at 1045AM</span>
+					<span class="ntflx-label">Today at 10:45 AM</span>
 				</header>
+				<section class="ntflx-chat__area">
+					<!-- Message Sender (Text) -->
+					<div class="ntflx-chat__item">
+						<img class="ntflx-avatar" src="images/avatars/avatar-michaela.png" alt="Jessi Greene" />
+						<div class="ntflx-message">
+							<p class="ntflx-text">Hi Amy! How are you?</p>
+							<time class="ntflx-time-stamp">5 Minutes ago</time>
+						</div>
+					</div>
+
+					<!-- Message Recipient (Text) -->
+					<div class="ntflx-chat__item ntflx-chat__item--alternate">
+						<img class="ntflx-avatar" src="images/avatars/avatar-todd.png" alt="Jessi Greene" />
+						<div class="ntflx-message">
+							<p class="ntflx-text">Doing Good, how do you feel about grabbing a coffee sometime?</p>
+							<time class="ntflx-time-stamp">5 Minutes ago</time>
+						</div>
+					</div>
+
+					<!-- Message Recipient (Gif) -->
+					<div class="ntflx-chat__item ntflx-chat__item--alternate ntflx-chat__item--img">
+						<div class="ntflx-typing">
+							<img class="ntflx-typing-avatar" src="images/avatars/avatar-michaela.png" alt="" />
+							<div class="ntflx-typing__bubbles"><img src="images/loading.gif" /></div>
+						</div>
+						<img class="ntflx-avatar" src="images/avatars/avatar-todd.png" alt="Jessi Greene" />
+						<div class="ntflx-message"><img class="ntflx-message__img" src="images/media//media-architecture.gif" alt="Jessi Greene" /></div>
+					</div>
+
+					<!-- Message Recipient (Text) -->
+					<div class="ntflx-chat__item ntflx-chat__item--alternate" data-time-stamp="5 Minutes ago">
+						<img class="ntflx-avatar" src="images/avatars/avatar-todd.png" alt="Jessi Greene" />
+						<div class="ntflx-message">
+							<p class="ntflx-text" id="target-text"></p>
+							<time class="ntflx-time-stamp">1 Second ago</time>
+						</div>
+					</div>
+				</section>
+
+				<!-- Media Tray -->
+				<div class="ntflx-media-tray">
+					<div class="ntflx-media-tray__item ntflx-media-tray__item--video">
+						<video
+							id="ntflx-media-tray__video"
+							poster="https://scontent-dfw5-2.cdninstagram.com/vp/ed2b569e021bdd1f70484b3669bb4a26/5BEE9705/t51.2885-15/e15/41270037_307721276706711_7826011585711309349_n.jpg"
+							src="https://scontent-dfw5-2.cdninstagram.com/vp/565b9b59096f78b54c2c5817f35a7717/5BEE1093/t50.2886-16/41581419_2061572997227848_3608743105349550080_n.mp4"
+						></video>
+					</div>
+					<div class="ntflx-media-tray__item ntflx-media-tray__item--img"><img src="images/media/media-image-one.jpg" alt="" /></div>
+					<div class="ntflx-media-tray__item ntflx-media-tray__item--img ntflx-media-tray__item--animated">
+						<img class="ntflx-media-tray__img--dynamic" src="images/media//media-architecture.gif" alt="" />
+					</div>
+					<div class="ntflx-media-tray__item ntflx-media-tray__item--img"><img src="images/media/media-image-four.jpg" alt="" /></div>
+					<div class="ntflx-media-tray__item ntflx-media-tray__item--img"><img src="images/media/media-image-five.jpg" alt="" /></div>
+				</div>
+
+				<!-- Main Chat Area Footer -->
+				<footer class="ntflx-chat__footer">
+					<div class="ntflx-message__entry">
+						<!-- Plus Icon SVG Code -->
+						<span class="ntflx-plus"></span>
+
+						<input class="ntflx-message__text-input" placeholder="Type message..." type="text" />
+						<!-- Check Icon SVG Code -->
+						<span class="ntflx-check">
+							<svg width="20px" height="20px" viewBox="0 0 20 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+								<defs>
+									<polygon id="path-1" points="3.70710678 12.2928932 2.29289322 13.7071068 8 19.4142136 21.7071068 5.70710678 20.2928932 4.29289322 8 16.5857864"></polygon>
+								</defs>
+								<g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+									<g id="Icons/24/Checkmark" transform="translate(-2.000000, -4.000000)">
+										<mask id="mask-2" fill="white"><use xlink:href="#path-1"></use></mask>
+										<use id="Path-4" fill="#FFFFFF" xlink:href="#path-1"></use>
+									</g>
+								</g>
+							</svg>
+						</span>
+					</div>
+				</footer>
 			</main>
 		</section>
+		<script src="scripts/main.js"></script>
 	</body>
 </html>
